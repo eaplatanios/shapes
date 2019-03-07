@@ -11,7 +11,7 @@ It can also be executed using (the example files can be
 replaced as needed):
 
 ```bash
-swift run shapes \ 
+swift run -c release shapes \ 
   --captions "Example/captions.txt" \
   --description-config "Example/description-config.json" \
   --generator-config "Example/generator-config.json" \

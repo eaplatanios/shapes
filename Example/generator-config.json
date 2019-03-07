@@ -1,10 +1,10 @@
 {
-  "height" : 64,
-  "minNumRandomShapes" : 1,
-  "shuffleDescriptions" : true,
   "width" : 64,
-  "maxNumRandomShapes" : 3,
+  "height" : 64,
+  "backgroundColor" : "black",
   "numImagesPerCaption" : 10,
+  "shuffleDescriptions" : true,
   "maxOverlapRatio" : 0,
-  "backgroundColor" : "black"
+  "minNumRandomShapes" : 1,
+  "maxNumRandomShapes" : 3
 }
