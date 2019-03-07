@@ -64,7 +64,10 @@ do {
   let parsedConvertToPng = parsedArguments.get(convertToPng) ?? false
 
   // First we clean the output directory.
-  try FileManager.default.removeItem(at: outputDirURL)
+  if FileManager.default.fileExists(atPath: outputDirURL.path) {
+    try FileManager.default.removeItem(at: outputDirURL)
+  }
+
   try FileManager.default.createDirectory(
     at: outputSVGDirURL, 
     withIntermediateDirectories: true,
