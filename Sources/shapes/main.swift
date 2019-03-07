@@ -31,25 +31,26 @@ let outputDirPath: OptionArgument<String> = parser.add(
   kind: String.self,
   usage: "Path to the directory where the generated images will be saved.")
 
-func processArguments(arguments: ArgumentParser.Result) throws {
+do {
+  let parsedArguments = try parser.parse(arguments)
   let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 
-  let captionsFile = arguments.get(captionsPath)!
+  let captionsFile = parsedArguments.get(captionsPath)!
   let captionsFileURL = currentDirectoryURL.appendingPathComponent(captionsFile)
   let captionsString = try String(contentsOf: captionsFileURL, encoding: .utf8)
   let captions = try parseCaptions(captionsString)
 
-  let descriptionConfigFile = arguments.get(descriptionConfigPath)!
+  let descriptionConfigFile = parsedArguments.get(descriptionConfigPath)!
   let descriptionConfigFileURL = currentDirectoryURL.appendingPathComponent(descriptionConfigFile)
   let descriptionConfigString = try String(contentsOf: descriptionConfigFileURL, encoding: .utf8)
   let descriptionConfig = try DescriptionConfig.from(json: descriptionConfigString)
 
-  let generatorConfigFile = arguments.get(generatorConfigPath)!
+  let generatorConfigFile = parsedArguments.get(generatorConfigPath)!
   let generatorConfigFileURL = currentDirectoryURL.appendingPathComponent(generatorConfigFile)
   let generatorConfigString = try String(contentsOf: generatorConfigFileURL, encoding: .utf8)
   let generatorConfig = try GeneratorConfig.from(json: generatorConfigString)
 
-  let outputDir = arguments.get(outputDirPath)!
+  let outputDir = parsedArguments.get(outputDirPath)!
   let outputDirURL = currentDirectoryURL.appendingPathComponent(outputDir)  
   let outputRequestedCaptionsFileURL = outputDirURL.appendingPathComponent("requested_captions.txt")
   let outputFullCaptionsFileURL = outputDirURL.appendingPathComponent("full_captions.txt")
@@ -63,27 +64,33 @@ func processArguments(arguments: ArgumentParser.Result) throws {
     attributes: nil)
   
   var generator = Generator()
-  var requestedCaptions = [String]()
-  var fullCaptions = [String]()
-  requestedCaptions.reserveCapacity(captions.count * generatorConfig.numImagesPerCaption)
-  fullCaptions.reserveCapacity(captions.count * generatorConfig.numImagesPerCaption)
-  var i = 0
-  for (c, caption) in captions.enumerated() {
+  let n = captions.count * generatorConfig.numImagesPerCaption
+  var requestedCaptions = Array(repeating: "", count: n)
+  var fullCaptions = Array(repeating: "", count: n)
+  DispatchQueue.concurrentPerform(iterations: captions.count) { c in
+    let caption = captions[c]
     let captionString = caption.map { $0.caption } .joined(separator: ", ")
     print("Generating images for caption \(c) / \(captions.count): \(captionString).")
-    for _ in 0..<generatorConfig.numImagesPerCaption {
+    for j in 0..<generatorConfig.numImagesPerCaption {
       let image = generator.generateImage(
         for: caption, 
         generatorConfig: generatorConfig,
         descriptionConfig: descriptionConfig)
-      requestedCaptions.append(image.requestedCaption)
-      fullCaptions.append(image.fullCaption)
-      try image.svg.write(
-        to: outputSVGDirURL.appendingPathComponent("\(i).svg"),
-        atomically: false,
-        encoding: .utf8)
-      i += 1
+      let i = c * generatorConfig.numImagesPerCaption + j
+      requestedCaptions[i] = image.requestedCaption
+      fullCaptions[i] = image.fullCaption
+      do {
+        try image.svg.write(
+          to: outputSVGDirURL.appendingPathComponent("\(i).svg"),
+          atomically: false,
+          encoding: .utf8)
+      } catch DataError.invalidShape(let shape) {
+        print("Invalid shape: \(shape)")
+      } catch let error {
+        print(error.localizedDescription)
+      }
     }
+    print("Generated images for caption \(c) / \(captions.count): \(captionString).")
   }
 
   print("Saving the image captions.")
@@ -95,14 +102,8 @@ func processArguments(arguments: ArgumentParser.Result) throws {
     to: outputFullCaptionsFileURL,
     atomically: false,
     encoding: .utf8)
-
   print("Finished generating images.")
   print("Output directory: \(outputDirURL.absoluteString).")
-}
-
-do {
-  let parsedArguments = try parser.parse(arguments)
-  try processArguments(arguments: parsedArguments)
 } catch let error as ArgumentParserError {
   print(error.description)
 } catch DataError.invalidShape(let shape) {
