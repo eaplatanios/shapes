@@ -30,6 +30,10 @@ let outputDirPath: OptionArgument<String> = parser.add(
   shortName: "-o",
   kind: String.self,
   usage: "Path to the directory where the generated images will be saved.")
+let convertToPng: OptionArgument<Bool> = parser.add(
+  option: "--convert-to-png",
+  kind: Bool.self,
+  usage: "Boolean value indicating whether to convert the output SVG images to PNG.")
 
 do {
   let parsedArguments = try parser.parse(arguments)
@@ -55,6 +59,9 @@ do {
   let outputRequestedCaptionsFileURL = outputDirURL.appendingPathComponent("requested_captions.txt")
   let outputFullCaptionsFileURL = outputDirURL.appendingPathComponent("full_captions.txt")
   let outputSVGDirURL = outputDirURL.appendingPathComponent("svg")
+  let outputPNGDirURL = outputDirURL.appendingPathComponent("png")
+
+  let parsedConvertToPng = parsedArguments.get(convertToPng) ?? false
 
   // First we clean the output directory.
   try FileManager.default.removeItem(at: outputDirURL)
@@ -62,6 +69,12 @@ do {
     at: outputSVGDirURL, 
     withIntermediateDirectories: true,
     attributes: nil)
+  if parsedConvertToPng {
+    try FileManager.default.createDirectory(
+      at: outputPNGDirURL, 
+      withIntermediateDirectories: true,
+      attributes: nil)
+  }
   
   var generator = Generator()
   let n = captions.count * generatorConfig.numImagesPerCaption
@@ -80,10 +93,28 @@ do {
       requestedCaptions[i] = image.requestedCaption
       fullCaptions[i] = image.fullCaption
       do {
+        let svgFileURL = outputSVGDirURL.appendingPathComponent("\(i).svg")
         try image.svg.write(
-          to: outputSVGDirURL.appendingPathComponent("\(i).svg"),
+          to: svgFileURL,
           atomically: false,
           encoding: .utf8)
+        if parsedConvertToPng {
+          let pngFileURL = outputPNGDirURL.appendingPathComponent("\(i).png")
+          let process = Process()
+          process.environment = ProcessInfo.processInfo.environment
+          process.launchPath = "/bin/bash"
+          process.arguments = [
+            "-c", """
+              rsvg-convert \
+                -w \(Int(generatorConfig.width)) \
+                -h \(Int(generatorConfig.height)) \
+                -b \(generatorConfig.backgroundColor.rawValue) \
+                \(svgFileURL.path) \
+                -o \(pngFileURL.path)
+              """]
+          process.launch()
+          process.waitUntilExit()
+        }
       } catch DataError.invalidShape(let shape) {
         print("Invalid shape: \(shape)")
       } catch let error {

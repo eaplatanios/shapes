@@ -25,3 +25,22 @@ executing successfully, the output directory (i.e.,
 text files with the requested and the full generated 
 image captions, as well as the generated images in SVG 
 format, in the `svg` subdirectory.
+
+## PNG Images
+
+For this functionality, you need to have the `rsvg-convert` 
+package installed. For MacOS, you can install that using 
+Homebrew, by executing `brew install librsvg`, and for 
+Ubuntu, you can install it by executing 
+`apt-get install librsvg2-bin`. Then, `shapes` can also 
+convert the generated SVG images to PNG images, if one 
+additional option is provided when executing:
+
+```bash
+swift run -c release shapes \
+  --captions "Example/captions.txt" \
+  --description-config "Example/description-config.json" \
+  --generator-config "Example/generator-config.json" \
+  --output-dir "Example/output" \
+  --convert-to-png
+```
