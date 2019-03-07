@@ -2,9 +2,9 @@
   "width" : 64,
   "height" : 64,
   "backgroundColor" : "black",
-  "numImagesPerCaption" : 10,
+  "numImagesPerCaption" : 1000,
   "shuffleDescriptions" : true,
-  "maxOverlapRatio" : 0,
+  "maxOverlapRatio" : 0.25,
   "minNumRandomShapes" : 1,
   "maxNumRandomShapes" : 3
 }
