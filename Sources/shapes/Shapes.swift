@@ -253,8 +253,8 @@ public class SimplePolygon : Shape {
 
   public func rotate(by degrees: Double) -> Shape {
     let centroid = self.centroid
-    let cosD = __cospi(degrees / 180.0)
-    let sinD = __sinpi(degrees / 180.0)
+    let cosD = cos(Double.pi * degrees / 180.0)
+    let sinD = sin(Double.pi * degrees / 180.0)
     return SimplePolygon(vertices: vertices.map {
       let centered = $0 - centroid
       let rotated = Point(
@@ -496,8 +496,8 @@ public class SemiCircle : Shape {
   }
 
   public func rotate(by degrees: Double) -> Shape {
-    let cosD = __cospi(degrees / 180.0)
-    let sinD = __sinpi(degrees / 180.0)
+    let cosD = cos(Double.pi * degrees / 180.0)
+    let sinD = sin(Double.pi * degrees / 180.0)
     let start = self.radiusSegment.start
     let end = self.radiusSegment.end
     let centeredEnd = end - start
@@ -541,8 +541,8 @@ public class Ellipse : Shape {
     // For this we are generating a polygon approximation to a circle based on 
     // horizontal radius, then scaling it along the y-axis by the appropriate 
     // ratio, and finally rotating it.
-    let cosRotationAngle = __cospi(self.rotationAngle / 180.0)
-    let sinRotationAngle = __sinpi(self.rotationAngle / 180.0)
+    let cosRotationAngle = cos(Double.pi * self.rotationAngle / 180.0)
+    let sinRotationAngle = sin(Double.pi * self.rotationAngle / 180.0)
     let n = self.polygonNumVertices
     let a = 2 * Double.pi / Double(n)
     let r = self.horizontalRadius / cos(a / 2)
