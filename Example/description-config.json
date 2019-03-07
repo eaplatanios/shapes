@@ -1,0 +1,59 @@
+{
+  "polygonApproxNumVertices" : 50,
+  "circleRadiusRange" : [
+    10,
+    20
+  ],
+  "crossHeightRange" : [
+    10,
+    20
+  ],
+  "rectangleHeightRange" : [
+    5,
+    10
+  ],
+  "rectangleWidthRange" : [
+    20,
+    30
+  ],
+  "triangleHeightRange" : [
+    5,
+    10
+  ],
+  "triangleWidthRange" : [
+    20,
+    30
+  ],
+  "crossThicknessRange" : [
+    2,
+    4
+  ],
+  "ellipseHorizontalRadiusRange" : [
+    10,
+    20
+  ],
+  "ellipseVerticalRadiusRange" : [
+    3,
+    5
+  ],
+  "semiCircleRadiusRange" : [
+    10,
+    20
+  ],
+  "rotationRange" : [
+    0,
+    360
+  ],
+  "pentagonSizeRange" : [
+    20,
+    30
+  ],
+  "squareSizeRange" : [
+    20,
+    30
+  ],
+  "crossWidthRange" : [
+    20,
+    30
+  ]
+}

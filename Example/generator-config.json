@@ -1,0 +1,10 @@
+{
+  "height" : 64,
+  "minNumRandomShapes" : 1,
+  "shuffleDescriptions" : true,
+  "width" : 64,
+  "maxNumRandomShapes" : 3,
+  "numImagesPerCaption" : 10,
+  "maxOverlapRatio" : 0,
+  "backgroundColor" : "black"
+}

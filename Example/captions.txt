@@ -1,0 +1,6 @@
+red triangle
+red circle, blue square
+yellow ellipse
+rectangle
+semicircle
+green cross, blue rectangle, red semicircle
