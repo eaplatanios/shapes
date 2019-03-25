@@ -50,7 +50,7 @@ public struct Generator {
    ) -> GeneratedImage {
     var shuffledDescriptions = [Description]()
     let numRandomImages = Int.random(
-      in: generatorConfig.minNumRandomShapes..<generatorConfig.maxNumRandomShapes, 
+      in: generatorConfig.minNumRandomShapes...generatorConfig.maxNumRandomShapes,
       using: &rng)
     for _ in 0..<numRandomImages {
       shuffledDescriptions.append(self.sampleDescription())
@@ -65,8 +65,8 @@ public struct Generator {
         generatorConfig: generatorConfig,
         generator: &self)
       if (shape == nil || !checkShape(
-          shape: shape!, 
-          existingShapes: shapes, 
+          shape: shape!,
+          existingShapes: shapes,
           maxOverlapRatio: generatorConfig.maxOverlapRatio)) {
         shapes.removeAll()
         i = 0
@@ -76,11 +76,11 @@ public struct Generator {
       }
     }
     let svg = """
-      <svg 
+      <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="\(generatorConfig.width)" 
-        height="\(generatorConfig.height)" 
-        viewBox="0 0 \(generatorConfig.width) \(generatorConfig.height)" 
+        width="\(generatorConfig.width)"
+        height="\(generatorConfig.height)"
+        viewBox="0 0 \(generatorConfig.width) \(generatorConfig.height)"
         style="background-color: \(generatorConfig.backgroundColor.rawValue)">
         \(shapes.map { $0.shape.svg(color: $0.color) } .joined())
       </svg>
@@ -91,7 +91,7 @@ public struct Generator {
    }
 
   internal func checkShape(
-    shape: ColoredShape, 
+    shape: ColoredShape,
     existingShapes: [ColoredShape],
     maxOverlapRatio: Double? = nil
   ) -> Bool {

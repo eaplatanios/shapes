@@ -48,7 +48,7 @@ public protocol Description {
 
 internal extension Description {
   func rotateShape(
-    _ shape: Shape, 
+    _ shape: Shape,
     rotationRange: ClosedRange<Double>?,
     generator: inout Generator
   ) -> Shape {
@@ -57,7 +57,7 @@ internal extension Description {
   }
 
   func positionShape(
-    _ shape: Shape, 
+    _ shape: Shape,
     config: GeneratorConfig,
     generator: inout Generator
   ) -> Shape? {
@@ -109,7 +109,7 @@ public class TriangleDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) triangle")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -146,7 +146,7 @@ public class SquareDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -185,7 +185,7 @@ public class RectangleDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -224,7 +224,7 @@ public class PentagonDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -272,7 +272,7 @@ public class CrossDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -306,7 +306,7 @@ public class CircleDescription : Description {
       polygonNumVertices: descriptionConfig.polygonApproxNumVertices)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -341,7 +341,7 @@ public class SemiCircleDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
@@ -380,7 +380,7 @@ public class EllipseDescription : Description {
     shape = self.rotateShape(shape, rotationRange: descriptionConfig.rotationRange, generator: &generator)
     let color = self.color ?? generator.sampleColor()
     if let s = self.positionShape(shape, config: generatorConfig, generator: &generator) {
-      return (shape: s, color: color, caption: "\(color.rawValue) square")
+      return (shape: s, color: color, caption: self.caption)
     } else {
       return nil
     }
