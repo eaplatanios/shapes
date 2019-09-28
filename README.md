@@ -7,20 +7,32 @@ shapes of various colors. The package can be compiled using:
 swift build -c release
 ```
 
-It can also be executed using (the example files can be 
+It can be executed using either (the example files can be 
 replaced as needed):
 
 ```bash
 swift run -c release shapes \ 
-  --captions "Example/captions.txt" \
-  --description-config "Example/description-config.json" \
-  --generator-config "Example/generator-config.json" \
-  --output-dir "Example/output"
+  --descriptions "Examples/Small Example/descriptions.json" \
+  --configuration "Examples/Small Example/configuration.json" \
+  --output-dir "Examples/Small Example/Output"
 ```
 
-This can also be executed by using the built `shapes` 
-executable in the `.build` directory, directly. After 
-executing successfully, the output directory (i.e.,  
+or:
+
+```bash
+swift run -c release shapes \ 
+  --captions "Examples/Small Example/captions.txt" \
+  --configuration "Examples/Small Example/configuration.json" \
+  --output-dir "Examples/Small Example/Output"
+```
+
+depending on the format in which the requested image
+descriptions are provided. Feel free to take a look in the
+provided example files to see the supported formats.
+
+The image generator can also be executed by using the built
+`shapes` executable in the `.build` directory, directly.
+After executing successfully, the output directory (i.e.,  
 `Example/output` in the example, above),  will contain 
 text files with the requested and the full generated 
 image captions, as well as the generated images in SVG 
@@ -37,10 +49,9 @@ convert the generated SVG images to PNG images, if one
 additional option is provided when executing:
 
 ```bash
-swift run -c release shapes \
-  --captions "Example/captions.txt" \
-  --description-config "Example/description-config.json" \
-  --generator-config "Example/generator-config.json" \
-  --output-dir "Example/output" \
+swift run -c release shapes \ 
+  --captions "Examples/Small Example/captions.txt" \
+  --configuration "Examples/Small Example/configuration.json" \
+  --output-dir "Examples/Small Example/Output" \
   --convert-to-png
 ```

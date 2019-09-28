@@ -1,0 +1,60 @@
+red triangle
+red triangle
+red triangle
+red triangle
+red triangle
+red triangle
+red triangle
+red triangle
+red triangle
+red triangle
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+red circle,  blue square
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+yellow ellipse
+rectangle
+rectangle
+rectangle
+rectangle
+rectangle
+rectangle
+rectangle
+rectangle
+rectangle
+rectangle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle
+green cross,  blue rectangle,  red semiCircle

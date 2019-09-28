@@ -1,0 +1,131 @@
+{
+  "width": 64,
+  "height": 64,
+  "backgroundColor": "black",
+  "imageCountPerDescription": 10,
+  "shuffledDescriptions": true,
+  "maxOverlapRatio": 0.00,
+  "randomShapeCountRange": [0, 0],
+  "allowedRandomDescriptions": [
+    {
+      "type": "triangle",
+      "widthRange": [6, 16],
+      "heightRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "square",
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "rectangle",
+      "widthRange": [6, 16],
+      "heightRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "pentagon",
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "regularPolygon",
+      "vertexCountRange": [6, 10],
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "cross",
+      "widthRange": [6, 16],
+      "heightRange": [6, 16],
+      "thicknessRange": [2, 4],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "circle",
+      "radiusRange": [3, 8],
+      "rotationRange": [0, 360],
+      "polygonVertexCount": 50,
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "semiCircle",
+      "radiusRange": [3, 8],
+      "rotationRange": [0, 360],
+      "polygonVertexCount": 50,
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }, {
+      "type": "ellipse",
+      "horizontalRadiusRange": [3, 8],
+      "verticalRadiusRange": [3, 8],
+      "rotationRange": [0, 360],
+      "polygonVertexCount": 50,
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }
+  ],
+  "captionDescriptions": {
+    "triangle": {
+      "type": "triangle",
+      "widthRange": [6, 16],
+      "heightRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "square": {
+      "type": "square",
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "rectangle": {
+      "type": "rectangle",
+      "widthRange": [6, 16],
+      "heightRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "pentagon": {
+      "type": "pentagon",
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "regularPolygon": {
+      "type": "regularPolygon",
+      "vertexCountRange": [6, 10],
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "cross": {
+      "type": "cross",
+      "widthRange": [6, 16],
+      "heightRange": [6, 16],
+      "thicknessRange": [2, 4],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "circle": {
+      "type": "circle",
+      "radiusRange": [3, 8],
+      "rotationRange": [0, 360],
+      "polygonVertexCount": 50,
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "semiCircle": {
+      "type": "semiCircle",
+      "radiusRange": [3, 8],
+      "rotationRange": [0, 360],
+      "polygonVertexCount": 50,
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    },
+    "ellipse": {
+      "type": "ellipse",
+      "horizontalRadiusRange": [3, 8],
+      "verticalRadiusRange": [3, 8],
+      "rotationRange": [0, 360],
+      "polygonVertexCount": 50,
+      "allowedColors": ["white", "red", "green", "blue", "yellow", "magenta", "cyan", "gray"]
+    }
+  }
+}

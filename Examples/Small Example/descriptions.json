@@ -1,0 +1,39 @@
+[
+  [
+    {
+      "type": "regularPolygon",
+      "vertexCountRange": [5, 5],
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white"],
+      "caption": "pentagon"
+    }
+  ], [
+    {
+      "type": "regularPolygon",
+      "vertexCountRange": [6, 6],
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white"],
+      "caption": "hexagon"
+    }
+  ], [
+    {
+      "type": "regularPolygon",
+      "vertexCountRange": [7, 7],
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white"],
+      "caption": "heptagon"
+    }
+  ], [
+    {
+      "type": "regularPolygon",
+      "vertexCountRange": [8, 8],
+      "sizeRange": [6, 16],
+      "rotationRange": [0, 360],
+      "allowedColors": ["white"],
+      "caption": "octagon"
+    }
+  ]
+]

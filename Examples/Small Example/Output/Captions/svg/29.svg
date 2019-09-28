@@ -1,0 +1,18 @@
+<svg 
+  xmlns="http://www.w3.org/2000/svg"
+  width="64.0" 
+  height="64.0" 
+  viewBox="0 0 64.0 64.0" 
+  style="background-color: black">
+  <circle 
+  cx="16.095141134142764" 
+  cy="51.80390807768464" 
+  r="5.7713707185483685" 
+  fill="white" /><ellipse 
+  cx="45.20721794765355" 
+  cy="37.34726805084025" 
+  rx="7.567714658724992" 
+  ry="4.757808686314252"
+  transform="rotate(252.20485384187444, 45.20721794765355, 37.34726805084025)"
+  fill="yellow" />
+</svg>
