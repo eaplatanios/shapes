@@ -140,13 +140,13 @@ do {
     process.launchPath = "/bin/bash"
     process.arguments = [
       "-c", """
-        for i in `find \(outputSVGDirURL.path) -name '*.svg' -exec basename {} \\;`; \
+        for i in `find '\(outputSVGDirURL.path)' -name '*.svg' -exec basename {} \\;`; \
         do rsvg-convert \
           -w \(Int(configuration.width)) \
           -h \(Int(configuration.height)) \
           -b \(configuration.backgroundColor.rawValue) \
-          \(outputSVGDirURL.path)/$i \
-          -o \(outputPNGDirURL.path)/`echo $i | sed -e 's/svg$/png/'`; \
+          '\(outputSVGDirURL.path)'/$i \
+          -o '\(outputPNGDirURL.path)'/`echo $i | sed -e 's/svg$/png/'`; \
         done
         """]
     process.launch()

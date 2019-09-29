@@ -123,7 +123,7 @@ public struct TriangleDescription: Description {
         Point(width, height),
         Point(width / 2.0, 0.0)]
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "triangle")
+    return (shape: shape, caption: caption ?? "triangle")
   }
 }
 
@@ -155,7 +155,7 @@ public struct SquareDescription: Description {
       Point(size, size),
       Point(size, 0.0)]
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "square")
+    return (shape: shape, caption: caption ?? "square")
   }
 }
 
@@ -192,7 +192,7 @@ public struct RectangleDescription: Description {
         Point(width, height),
         Point(width, 0.0)]
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "rectangle")
+    return (shape: shape, caption: caption ?? "rectangle")
   }
 }
 
@@ -225,7 +225,7 @@ public struct PentagonDescription: Description {
       Point(1.000000, 0.363271),
       Point(0.500000, 0.000000)]
     ).scaled(by: size).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "pentagon")
+    return (shape: shape, caption: caption ?? "pentagon")
   }
 }
 
@@ -269,7 +269,7 @@ public struct RegularPolygonDescription: Description {
     let shape = ConvexPolygon(
       vertices: vertices
     ).scaled(by: size).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "polygon[\(vertexCount)]")
+    return (shape: shape, caption: caption ?? "polygon[\(vertexCount)]")
   }
 }
 
@@ -318,7 +318,7 @@ public struct CrossDescription: Description {
         Point((width + thickness) / 2.0, (height - thickness) / 2.0),
         Point((width + thickness) / 2.0, 0.0)]
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "cross")
+    return (shape: shape, caption: caption ?? "cross")
   }
 }
 
@@ -351,7 +351,7 @@ public struct CircleDescription: Description {
       radiusSegment: Line(Point(0.0, 0.0), Point(radius, 0.0)),
       polygonVertexCount: polygonVertexCount
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "circle")
+    return (shape: shape, caption: caption ?? "circle")
   }
 }
 
@@ -384,7 +384,7 @@ public struct SemiCircleDescription: Description {
       radiusSegment: Line(Point(0.0, 0.0), Point(radius, 0.0)),
       polygonVertexCount: polygonVertexCount
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "semicircle")
+    return (shape: shape, caption: caption ?? "semicircle")
   }
 }
 
@@ -424,6 +424,6 @@ public struct EllipseDescription: Description {
       rotationAngle: 0.0,
       polygonVertexCount: polygonVertexCount
     ).rotated(randomlyInRange: rotationRange, rng: &rng)
-    return (shape: shape, caption: "ellipse")
+    return (shape: shape, caption: caption ?? "ellipse")
   }
 }
